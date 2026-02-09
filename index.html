@@ -2,172 +2,185 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GURU PRASAAD MURUGAN G12 | JARVIS CORE</title>
+<title>GURU PRASAAD MURUGAN G12 | Neural Command Core</title>
 
 <style>
 :root{
   --neon:#00f6ff;
-  --dark:#020b14;
-  --panel:#071e33;
+  --deep:#020912;
+  --panel:#041a2d;
 }
 
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  font-family:"Segoe UI",Arial,sans-serif;
+  font-family:Segoe UI,Arial,sans-serif;
   background:
-    radial-gradient(circle at 50% 0%, #0b355c, #020b14 70%);
+    radial-gradient(circle at top,#082b45,#020912 70%);
   color:var(--neon);
   overflow:hidden;
 }
 
-/* BACKGROUND ENERGY */
-.energy{
+/* GRID BACKGROUND */
+body::before{
+  content:"";
   position:fixed;
   inset:0;
   background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(0,246,255,.03) 0 1px,
-      transparent 1px 60px
-    );
-  animation:drift 40s linear infinite;
+    linear-gradient(rgba(0,246,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(0,246,255,.05) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:.15;
   pointer-events:none;
-}
-@keyframes drift{
-  from{background-position:0 0}
-  to{background-position:2000px 0}
 }
 
 /* HEADER */
 header{
   text-align:center;
-  padding:50px 20px 30px;
-  position:relative;
+  padding:60px 20px 40px;
+  perspective:800px;
 }
+
 header h1{
-  font-size:38px;
-  letter-spacing:5px;
-  text-shadow:0 0 25px var(--neon);
-  animation:pulse 3s ease-in-out infinite;
+  font-size:44px;
+  letter-spacing:6px;
+  text-shadow:
+    0 0 15px var(--neon),
+    0 0 40px rgba(0,246,255,.4);
+  animation:floatTitle 6s ease-in-out infinite;
 }
-@keyframes pulse{
-  0%,100%{text-shadow:0 0 18px var(--neon)}
-  50%{text-shadow:0 0 40px var(--neon)}
-}
+
 header p{
-  opacity:.75;
+  margin-top:12px;
+  opacity:.7;
   letter-spacing:3px;
 }
 
-/* GRID */
+@keyframes floatTitle{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+/* MAIN GRID */
 .grid{
-  max-width:1200px;
-  margin:auto;
-  padding:40px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:35px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:40px;
+  padding:40px;
+  max-width:1400px;
+  margin:auto;
   perspective:1200px;
 }
 
-/* CARD */
+/* HOLOGRAM CARD */
 .card{
   position:relative;
+  padding:40px 30px;
+  border-radius:20px;
   background:
-    linear-gradient(145deg,#072540,#041626);
-  border:1px solid rgba(0,246,255,.35);
-  border-radius:18px;
-  padding:36px 22px;
+    linear-gradient(145deg,#05243d,#031422);
+  border:1px solid rgba(0,246,255,.25);
   text-align:center;
   transform-style:preserve-3d;
-  transition:.6s cubic-bezier(.2,.8,.2,1);
-  box-shadow:
-    0 0 30px rgba(0,246,255,.12),
-    inset 0 0 20px rgba(0,246,255,.05);
-  animation:float 6s ease-in-out infinite;
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+  transition:transform .6s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 0 40px rgba(0,246,255,.1);
 }
 
-.card::after{
+/* DEPTH LAYER */
+.card::before{
   content:"";
   position:absolute;
-  inset:-1px;
-  border-radius:18px;
+  inset:-2px;
+  border-radius:20px;
   background:linear-gradient(120deg,transparent,var(--neon),transparent);
-  opacity:0;
-  transition:.5s;
+  opacity:.15;
+  filter:blur(12px);
+  transform:translateZ(-20px);
 }
-.card:hover{
-  transform:rotateX(8deg) rotateY(-8deg) scale(1.06);
-}
-.card:hover::after{opacity:.35}
 
+.card:hover{
+  transform:
+    rotateX(8deg)
+    rotateY(-8deg)
+    translateY(-15px)
+    scale(1.05);
+}
+
+/* CARD TEXT */
 .card h2{
   margin:0;
   letter-spacing:3px;
+  font-size:22px;
+  text-shadow:0 0 10px var(--neon);
 }
+
 .card span{
   display:block;
   margin-top:14px;
   font-size:13px;
-  opacity:.7;
+  opacity:.65;
 }
+
+/* FULL CLICK */
 .card a{
   position:absolute;
   inset:0;
+  text-decoration:none;
 }
 
-/* BLUE ENERGY ORBS */
+/* PARTICLE ORBS */
 .orb{
   position:fixed;
-  width:8px;height:8px;
-  border-radius:50%;
+  width:6px;
+  height:6px;
   background:var(--neon);
-  box-shadow:0 0 15px var(--neon);
-  animation:orb 12s linear infinite;
+  border-radius:50%;
+  box-shadow:0 0 12px var(--neon);
+  opacity:.6;
+  animation:floatOrb linear infinite;
 }
-@keyframes orb{
+
+@keyframes floatOrb{
   from{transform:translateY(110vh)}
   to{transform:translateY(-10vh)}
 }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:22px;
-  opacity:.5;
-  font-size:12px;
-  letter-spacing:2px;
-}
-
-/* SCAN LINE */
+/* SCAN WAVE */
 .scan{
   position:fixed;
-  inset:0;
-  background:
-    linear-gradient(
-      transparent,
-      rgba(0,246,255,.06),
-      transparent
-    );
+  top:-100%;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    transparent,
+    rgba(0,246,255,.12),
+    transparent);
   animation:scan 7s linear infinite;
   pointer-events:none;
 }
+
 @keyframes scan{
-  from{transform:translateY(-100%)}
-  to{transform:translateY(100%)}
+  from{top:-100%}
+  to{top:100%}
+}
+
+/* FOOTER */
+footer{
+  position:fixed;
+  bottom:18px;
+  width:100%;
+  text-align:center;
+  font-size:12px;
+  opacity:.5;
+  letter-spacing:2px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="energy"></div>
 <div class="scan"></div>
 
 <header>
@@ -176,24 +189,53 @@ footer{
 </header>
 
 <section class="grid">
-  <div class="card"><a href="watches.html"></a><h2>WATCHES</h2><span>Chronology Archive</span></div>
-  <div class="card"><a href="perfumes.html"></a><h2>PERFUMES</h2><span>Olfactory Database</span></div>
-  <div class="card"><a href="cars.html"></a><h2>CARS</h2><span>Mobility Intelligence</span></div>
-  <div class="card"><a href="documents.html"></a><h2>DOCUMENTS</h2><span>Knowledge Vault</span></div>
-  <div class="card"><a href="links.html"></a><h2>LINKS</h2><span>External Nodes</span></div>
-  <div class="card"><a href="videos.html"></a><h2>VIDEOS</h2><span>Visual Memory Core</span></div>
+
+  <div class="card"><a href="watches.html"></a>
+    <h2>WATCHES</h2><span>Chronology Intelligence Archive</span>
+  </div>
+
+  <div class="card"><a href="perfumes.html"></a>
+    <h2>PERFUMES</h2><span>Olfactory Neural Database</span>
+  </div>
+
+  <div class="card"><a href="cars.html"></a>
+    <h2>CARS</h2><span>Mobility & Power Systems</span>
+  </div>
+
+  <div class="card"><a href="documents.html"></a>
+    <h2>DOCUMENTS</h2><span>Private Knowledge Vault</span>
+  </div>
+
+  <div class="card"><a href="links.html"></a>
+    <h2>LINKS</h2><span>External Intelligence Nodes</span>
+  </div>
+
+  <div class="card"><a href="videos.html"></a>
+    <h2>VIDEOS</h2><span>Visual Memory Core</span>
+  </div>
+
 </section>
 
 <footer>SYSTEM STATUS : ONLINE</footer>
 
 <script>
-for(let i=0;i<20;i++){
+/* PARTICLE GENERATOR */
+for(let i=0;i<30;i++){
   const o=document.createElement("div");
   o.className="orb";
   o.style.left=Math.random()*100+"vw";
   o.style.animationDuration=8+Math.random()*10+"s";
+  o.style.animationDelay=Math.random()*-20+"s";
   document.body.appendChild(o);
 }
+
+/* PARALLAX RESPONSE */
+document.addEventListener("mousemove",e=>{
+  const x=(e.clientX/window.innerWidth-.5)*10;
+  const y=(e.clientY/window.innerHeight-.5)*10;
+  document.body.style.backgroundPosition=
+    `${50+x}% ${50+y}%`;
+});
 </script>
 
 </body>
