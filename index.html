@@ -1,125 +1,175 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GURU PRASAAD MURUGAN G12 | Neural Command Core</title>
+<title>GURU PRASAAD MURUGAN G12 — Private Silver Vault</title>
 
 <style>
+/* ===============================
+   GLOBAL VARIABLES (SAVOY TONE)
+================================*/
 :root{
-  --neon:#00f6ff;
-  --deep:#020912;
-  --panel:#041a2d;
+  --black:#050505;
+  --black-soft:#0b0b0b;
+  --silver:#cfcfcf;
+  --silver-soft:#9a9a9a;
+  --glass:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.12);
 }
 
-*{box-sizing:border-box}
-
-body{
+/* ===============================
+   RESET
+================================*/
+*{
   margin:0;
-  font-family:Segoe UI,Arial,sans-serif;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ===============================
+   BODY
+================================*/
+body{
   background:
-    radial-gradient(circle at top,#082b45,#020912 70%);
-  color:var(--neon);
+    radial-gradient(circle at top,#111,#050505 70%);
+  color:var(--silver);
+  font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  min-height:100vh;
   overflow:hidden;
 }
 
-/* GRID BACKGROUND */
+/* ===============================
+   SUBTLE GRID (LUXURY FLOOR)
+================================*/
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    linear-gradient(rgba(0,246,255,.05) 1px, transparent 1px),
-    linear-gradient(90deg,rgba(0,246,255,.05) 1px, transparent 1px);
-  background-size:60px 60px;
-  opacity:.15;
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:80px 80px;
+  opacity:.25;
   pointer-events:none;
 }
 
-/* HEADER */
+/* ===============================
+   HEADER
+================================*/
 header{
   text-align:center;
-  padding:60px 20px 40px;
-  perspective:800px;
+  padding:70px 20px 40px;
 }
 
 header h1{
-  font-size:44px;
+  font-size:42px;
   letter-spacing:6px;
+  font-weight:300;
+  color:var(--silver);
   text-shadow:
-    0 0 15px var(--neon),
-    0 0 40px rgba(0,246,255,.4);
-  animation:floatTitle 6s ease-in-out infinite;
+    0 0 18px rgba(255,255,255,.12),
+    0 0 50px rgba(255,255,255,.05);
+  animation:titleFloat 8s ease-in-out infinite;
 }
 
 header p{
-  margin-top:12px;
-  opacity:.7;
-  letter-spacing:3px;
+  margin-top:14px;
+  font-size:13px;
+  letter-spacing:4px;
+  color:var(--silver-soft);
 }
 
-@keyframes floatTitle{
+@keyframes titleFloat{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
+  50%{transform:translateY(-8px)}
 }
 
-/* MAIN GRID */
+/* ===============================
+   MAIN GRID
+================================*/
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:40px;
-  padding:40px;
-  max-width:1400px;
+  max-width:1500px;
   margin:auto;
-  perspective:1200px;
+  padding:50px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:50px;
+  perspective:1600px;
 }
 
-/* HOLOGRAM CARD */
+/* ===============================
+   SILVER GLASS CARD
+================================*/
 .card{
   position:relative;
-  padding:40px 30px;
-  border-radius:20px;
+  padding:48px 40px;
+  border-radius:22px;
   background:
-    linear-gradient(145deg,#05243d,#031422);
-  border:1px solid rgba(0,246,255,.25);
-  text-align:center;
+    linear-gradient(145deg,#0d0d0d,#060606);
+  border:1px solid var(--border);
+  box-shadow:
+    inset 0 0 0 rgba(255,255,255,0),
+    0 30px 80px rgba(0,0,0,.7);
   transform-style:preserve-3d;
-  transition:transform .6s cubic-bezier(.2,.8,.2,1);
-  box-shadow:0 0 40px rgba(0,246,255,.1);
+  transition:
+    transform .8s cubic-bezier(.18,.85,.35,1),
+    box-shadow .8s;
 }
 
-/* DEPTH LAYER */
+/* METAL EDGE */
 .card::before{
   content:"";
   position:absolute;
-  inset:-2px;
-  border-radius:20px;
-  background:linear-gradient(120deg,transparent,var(--neon),transparent);
-  opacity:.15;
-  filter:blur(12px);
-  transform:translateZ(-20px);
+  inset:-1px;
+  border-radius:22px;
+  background:
+    linear-gradient(120deg,
+      transparent,
+      rgba(255,255,255,.25),
+      transparent);
+  opacity:.2;
+  filter:blur(10px);
 }
 
+/* CARD DEPTH PLATE */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border-radius:18px;
+  background:var(--glass);
+  pointer-events:none;
+}
+
+/* HOVER MOTION */
 .card:hover{
   transform:
-    rotateX(8deg)
-    rotateY(-8deg)
-    translateY(-15px)
-    scale(1.05);
+    translateY(-18px)
+    rotateX(7deg)
+    rotateY(-6deg)
+    scale(1.04);
+  box-shadow:
+    0 45px 120px rgba(0,0,0,.9);
 }
 
-/* CARD TEXT */
+/* ===============================
+   CARD TEXT
+================================*/
 .card h2{
-  margin:0;
-  letter-spacing:3px;
   font-size:22px;
-  text-shadow:0 0 10px var(--neon);
+  letter-spacing:5px;
+  font-weight:300;
+  text-transform:uppercase;
+  color:var(--silver);
 }
 
 .card span{
   display:block;
-  margin-top:14px;
+  margin-top:18px;
   font-size:13px;
-  opacity:.65;
+  letter-spacing:2px;
+  color:var(--silver-soft);
 }
 
 /* FULL CLICK */
@@ -127,37 +177,42 @@ header p{
   position:absolute;
   inset:0;
   text-decoration:none;
+  z-index:5;
 }
 
-/* PARTICLE ORBS */
-.orb{
+/* ===============================
+   FLOATING SILVER PARTICLES
+================================*/
+.particle{
   position:fixed;
-  width:6px;
-  height:6px;
-  background:var(--neon);
+  width:4px;
+  height:4px;
+  background:var(--silver);
   border-radius:50%;
-  box-shadow:0 0 12px var(--neon);
-  opacity:.6;
-  animation:floatOrb linear infinite;
+  opacity:.25;
+  animation:particleMove linear infinite;
 }
 
-@keyframes floatOrb{
+@keyframes particleMove{
   from{transform:translateY(110vh)}
   to{transform:translateY(-10vh)}
 }
 
-/* SCAN WAVE */
+/* ===============================
+   SLOW LUXURY SCAN
+================================*/
 .scan{
   position:fixed;
   top:-100%;
   left:0;
   width:100%;
   height:100%;
-  background:linear-gradient(
-    transparent,
-    rgba(0,246,255,.12),
-    transparent);
-  animation:scan 7s linear infinite;
+  background:
+    linear-gradient(
+      transparent,
+      rgba(255,255,255,.08),
+      transparent);
+  animation:scan 10s linear infinite;
   pointer-events:none;
 }
 
@@ -166,15 +221,18 @@ header p{
   to{top:100%}
 }
 
-/* FOOTER */
+/* ===============================
+   FOOTER
+================================*/
 footer{
   position:fixed;
-  bottom:18px;
+  bottom:22px;
   width:100%;
   text-align:center;
   font-size:12px;
-  opacity:.5;
-  letter-spacing:2px;
+  letter-spacing:3px;
+  color:var(--silver-soft);
+  opacity:.7;
 }
 </style>
 </head>
@@ -185,54 +243,66 @@ footer{
 
 <header>
   <h1>GURU PRASAAD MURUGAN G12</h1>
-  <p>MY VIRTUAL HANDBOOK</p>
+  <p>PRIVATE SILVER VAULT — MY VIRTUAL HANDBOOK</p>
 </header>
 
 <section class="grid">
 
-  <div class="card"><a href="watches.html"></a>
-    <h2>WATCHES</h2><span>Chronology Intelligence Archive</span>
+  <div class="card">
+    <a href="watches.html"></a>
+    <h2>WATCHES</h2>
+    <span>Chronological Horology Archive</span>
   </div>
 
-  <div class="card"><a href="perfumes.html"></a>
-    <h2>PERFUMES</h2><span>Olfactory Neural Database</span>
+  <div class="card">
+    <a href="perfumes.html"></a>
+    <h2>PERFUMES</h2>
+    <span>Olfactory Signature Index</span>
   </div>
 
-  <div class="card"><a href="cars.html"></a>
-    <h2>CARS</h2><span>Mobility & Power Systems</span>
+  <div class="card">
+    <a href="cars.html"></a>
+    <h2>CARS</h2>
+    <span>Automotive Intelligence Vault</span>
   </div>
 
-  <div class="card"><a href="documents.html"></a>
-    <h2>DOCUMENTS</h2><span>Private Knowledge Vault</span>
+  <div class="card">
+    <a href="documents.html"></a>
+    <h2>DOCUMENTS</h2>
+    <span>Confidential Knowledge Ledger</span>
   </div>
 
-  <div class="card"><a href="links.html"></a>
-    <h2>LINKS</h2><span>External Intelligence Nodes</span>
+  <div class="card">
+    <a href="links.html"></a>
+    <h2>LINKS</h2>
+    <span>External Strategic Nodes</span>
   </div>
 
-  <div class="card"><a href="videos.html"></a>
-    <h2>VIDEOS</h2><span>Visual Memory Core</span>
+  <div class="card">
+    <a href="videos.html"></a>
+    <h2>VIDEOS</h2>
+    <span>Visual Memory Repository</span>
   </div>
 
 </section>
 
-<footer>SYSTEM STATUS : ONLINE</footer>
+<footer>SYSTEM STATUS : ACTIVE · ACCESS LEVEL : PRIVATE</footer>
 
 <script>
-/* PARTICLE GENERATOR */
-for(let i=0;i<30;i++){
-  const o=document.createElement("div");
-  o.className="orb";
-  o.style.left=Math.random()*100+"vw";
-  o.style.animationDuration=8+Math.random()*10+"s";
-  o.style.animationDelay=Math.random()*-20+"s";
-  document.body.appendChild(o);
+/* SILVER PARTICLES */
+for(let i=0;i<40;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=14+Math.random()*14+"s";
+  p.style.animationDelay=Math.random()*-30+"s";
+  document.body.appendChild(p);
 }
 
-/* PARALLAX RESPONSE */
+/* MICRO PARALLAX */
 document.addEventListener("mousemove",e=>{
-  const x=(e.clientX/window.innerWidth-.5)*10;
-  const y=(e.clientY/window.innerHeight-.5)*10;
+  const x=(e.clientX/window.innerWidth-.5)*6;
+  const y=(e.clientY/window.innerHeight-.5)*6;
   document.body.style.backgroundPosition=
     `${50+x}% ${50+y}%`;
 });
@@ -240,5 +310,6 @@ document.addEventListener("mousemove",e=>{
 
 </body>
 </html>
+
 
 
