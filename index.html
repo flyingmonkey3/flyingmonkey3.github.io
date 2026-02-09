@@ -1,87 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Personal Visual Library</title>
-  <meta charset="UTF-8">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      margin-bottom: 30px;
-    }
-    .card {
-      display: inline-block;
-      width: 220px;
-      margin: 15px;
-      background: white;
-      padding: 12px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .card h3 {
-      margin: 10px 0 0 0;
-    }
-    a {
-      text-decoration: none;
-      color: black;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>JARVIS | Personal Visual Library</title>
+
+<style>
+:root{
+  --neon:#00f6ff;
+  --bg:#020b14;
+  --panel:#061827;
+}
+
+body{
+  margin:0;
+  background:radial-gradient(circle at top, #071c2f, #020b14 70%);
+  font-family: "Segoe UI", Arial, sans-serif;
+  color:var(--neon);
+  overflow-x:hidden;
+}
+
+header{
+  text-align:center;
+  padding:40px 20px;
+}
+
+header h1{
+  letter-spacing:4px;
+  font-size:36px;
+  text-shadow:0 0 15px var(--neon);
+}
+
+header p{
+  opacity:.7;
+  margin-top:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  padding:40px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.card{
+  background:linear-gradient(145deg,#061c2e,#04121e);
+  border:1px solid rgba(0,246,255,.3);
+  border-radius:16px;
+  padding:30px 20px;
+  text-align:center;
+  position:relative;
+  transition:.4s;
+  box-shadow:0 0 25px rgba(0,246,255,.08);
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:16px;
+  box-shadow:0 0 25px var(--neon);
+  opacity:0;
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+}
+
+.card:hover::before{
+  opacity:.25;
+}
+
+.card h2{
+  margin:0;
+  letter-spacing:2px;
+}
+
+.card span{
+  display:block;
+  margin-top:12px;
+  font-size:13px;
+  opacity:.7;
+}
+
+.card a{
+  position:absolute;
+  inset:0;
+  text-decoration:none;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  opacity:.4;
+  font-size:12px;
+}
+
+/* HUD scan line */
+.scan{
+  position:fixed;
+  top:-100%;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(transparent,rgba(0,246,255,.08),transparent);
+  animation:scan 6s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes scan{
+  from{top:-100%}
+  to{top:100%}
+}
+</style>
 </head>
 
 <body>
 
-<h1>My Favourite Collections</h1>
+<div class="scan"></div>
 
-<div class="card">
-  <a href="watches.html">
-    <img src="https://via.placeholder.com/220">
-    <h3>Watches</h3>
-  </a>
-</div>
+<header>
+  <h1>J.A.R.V.I.S</h1>
+  <p>Personal Visual Intelligence System</p>
+</header>
 
-<div class="card">
-  <a href="perfumes.html">
-    <img src="https://via.placeholder.com/220">
-    <h3>Perfumes</h3>
-  </a>
-</div>
+<section class="grid">
 
-<div class="card">
-  <a href="cars.html">
-    <img src="https://via.placeholder.com/220">
-    <h3>Cars</h3>
-  </a>
-</div>
+  <div class="card">
+    <a href="watches.html"></a>
+    <h2>WATCHES</h2>
+    <span>Chronology Archive</span>
+  </div>
 
-<div class="card">
-  <a href="documents.html">
-    <img src="https://via.placeholder.com/220">
-    <h3>Documents</h3>
-  </a>
-</div>
+  <div class="card">
+    <a href="perfumes.html"></a>
+    <h2>PERFUMES</h2>
+    <span>Olfactory Database</span>
+  </div>
 
-<div class="card">
-  <a href="links.html">
-    <img src="https://via.placeholder.com/220">
-    <h3>Links</h3>
-  </a>
-</div>
+  <div class="card">
+    <a href="cars.html"></a>
+    <h2>CARS</h2>
+    <span>Mobility Intelligence</span>
+  </div>
 
-<div class="card">
-  <a href="videos.html">
-    <img src="https://via.placeholder.com/220">
-    <h3>Videos</h3>
-  </a>
-</div>
+  <div class="card">
+    <a href="documents.html"></a>
+    <h2>DOCUMENTS</h2>
+    <span>Knowledge Vault</span>
+  </div>
+
+  <div class="card">
+    <a href="links.html"></a>
+    <h2>LINKS</h2>
+    <span>External Nodes</span>
+  </div>
+
+  <div class="card">
+    <a href="videos.html"></a>
+    <h2>VIDEOS</h2>
+    <span>Visual Memory Core</span>
+  </div>
+
+</section>
+
+<footer>
+  SYSTEM STATUS : ONLINE
+</footer>
 
 </body>
 </html>
+
