@@ -1,166 +1,219 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GURU PRASAAD MURUGAN G12 — Private Silver Vault</title>
+<title>GURU PRASAAD MURUGAN G12 — Private Black Vault</title>
 
 <style>
-/* ===============================
-   GLOBAL VARIABLES (SAVOY TONE)
-================================*/
+/* =====================================================
+   CORE PALETTE — TRUE BLACK & SILVER (NO GREY UI)
+===================================================== */
 :root{
-  --black:#050505;
-  --black-soft:#0b0b0b;
-  --silver:#cfcfcf;
-  --silver-soft:#9a9a9a;
-  --glass:rgba(255,255,255,.04);
-  --border:rgba(255,255,255,.12);
+  --black:#000000;
+  --black-deep:#020202;
+  --silver:#e6e6e6;
+  --silver-dim:#b5b5b5;
+  --steel:#8f8f8f;
 }
 
-/* ===============================
+/* =====================================================
    RESET
-================================*/
+===================================================== */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-/* ===============================
-   BODY
-================================*/
+/* =====================================================
+   BODY — PURE BLACK, SILENT LUXURY
+===================================================== */
 body{
   background:
-    radial-gradient(circle at top,#111,#050505 70%);
+    radial-gradient(circle at top, #0a0a0a 0%, #000 55%);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   color:var(--silver);
-  font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;
   min-height:100vh;
   overflow:hidden;
 }
 
-/* ===============================
-   SUBTLE GRID (LUXURY FLOOR)
-================================*/
+/* =====================================================
+   MICRO GRID (MARBLE FLOOR EFFECT)
+===================================================== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:80px 80px;
-  opacity:.25;
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:120px 120px;
+  opacity:.15;
   pointer-events:none;
 }
 
-/* ===============================
-   HEADER
-================================*/
+/* =====================================================
+   CLOCK VAULT — TOP LEFT
+===================================================== */
+.clock-vault{
+  position:fixed;
+  top:28px;
+  left:28px;
+  width:230px;
+  padding:18px 20px;
+  background:linear-gradient(145deg,#050505,#000);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:18px;
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.85),
+    inset 0 0 0 rgba(255,255,255,0);
+  z-index:20;
+}
+
+/* CLOCK TEXT */
+.clock-day{
+  font-weight:700;
+  letter-spacing:3px;
+  font-size:14px;
+  color:var(--silver);
+}
+
+.clock-date{
+  margin-top:6px;
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--silver-dim);
+}
+
+/* DIGITAL FLIP TIME */
+.clock-time{
+  margin-top:14px;
+  display:flex;
+  gap:4px;
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.digit{
+  position:relative;
+  width:28px;
+  height:42px;
+  perspective:600px;
+}
+
+.digit span{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+  border-radius:6px;
+  box-shadow:
+    inset 0 -2px 0 rgba(255,255,255,.15);
+  transform-origin:bottom;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1);
+}
+
+/* =====================================================
+   HEADER — BOLD, COMMANDING
+===================================================== */
 header{
   text-align:center;
-  padding:70px 20px 40px;
+  padding:90px 20px 50px;
 }
 
 header h1{
-  font-size:42px;
+  font-size:46px;
+  font-weight:900;
   letter-spacing:6px;
-  font-weight:300;
   color:var(--silver);
+  text-transform:uppercase;
   text-shadow:
-    0 0 18px rgba(255,255,255,.12),
-    0 0 50px rgba(255,255,255,.05);
-  animation:titleFloat 8s ease-in-out infinite;
+    0 0 20px rgba(255,255,255,.15),
+    0 0 60px rgba(255,255,255,.08);
 }
 
 header p{
-  margin-top:14px;
+  margin-top:16px;
   font-size:13px;
-  letter-spacing:4px;
-  color:var(--silver-soft);
+  letter-spacing:5px;
+  color:var(--steel);
 }
 
-@keyframes titleFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-}
-
-/* ===============================
-   MAIN GRID
-================================*/
+/* =====================================================
+   MAIN VAULT GRID (3D DEPTH)
+===================================================== */
 .grid{
   max-width:1500px;
   margin:auto;
-  padding:50px;
+  padding:60px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:50px;
-  perspective:1600px;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:60px;
+  perspective:2000px;
 }
 
-/* ===============================
-   SILVER GLASS CARD
-================================*/
+/* =====================================================
+   VAULT PANEL (REAL DEPTH)
+===================================================== */
 .card{
   position:relative;
-  padding:48px 40px;
-  border-radius:22px;
+  padding:55px 45px;
+  border-radius:26px;
   background:
-    linear-gradient(145deg,#0d0d0d,#060606);
-  border:1px solid var(--border);
+    linear-gradient(160deg,#070707,#000);
+  border:1px solid rgba(255,255,255,.22);
   box-shadow:
-    inset 0 0 0 rgba(255,255,255,0),
-    0 30px 80px rgba(0,0,0,.7);
+    0 40px 120px rgba(0,0,0,.9);
   transform-style:preserve-3d;
   transition:
-    transform .8s cubic-bezier(.18,.85,.35,1),
-    box-shadow .8s;
+    transform .9s cubic-bezier(.18,.85,.35,1),
+    box-shadow .9s;
 }
 
-/* METAL EDGE */
+/* METAL EDGE GLEAM */
 .card::before{
   content:"";
   position:absolute;
   inset:-1px;
-  border-radius:22px;
+  border-radius:26px;
   background:
     linear-gradient(120deg,
       transparent,
-      rgba(255,255,255,.25),
+      rgba(255,255,255,.35),
       transparent);
-  opacity:.2;
-  filter:blur(10px);
+  opacity:.18;
+  filter:blur(14px);
 }
 
-/* CARD DEPTH PLATE */
+/* INNER GLASS */
 .card::after{
   content:"";
   position:absolute;
-  inset:12px;
-  border-radius:18px;
-  background:var(--glass);
+  inset:14px;
+  border-radius:22px;
+  background:rgba(255,255,255,.03);
   pointer-events:none;
 }
 
-/* HOVER MOTION */
+/* HOVER — SLOW, HEAVY, EXPENSIVE */
 .card:hover{
   transform:
-    translateY(-18px)
-    rotateX(7deg)
+    translateY(-22px)
+    rotateX(8deg)
     rotateY(-6deg)
-    scale(1.04);
+    scale(1.05);
   box-shadow:
-    0 45px 120px rgba(0,0,0,.9);
+    0 70px 180px rgba(0,0,0,1);
 }
 
-/* ===============================
-   CARD TEXT
-================================*/
+/* CARD TEXT */
 .card h2{
-  font-size:22px;
+  font-size:24px;
+  font-weight:900;
   letter-spacing:5px;
-  font-weight:300;
-  text-transform:uppercase;
   color:var(--silver);
 }
 
@@ -168,148 +221,124 @@ header p{
   display:block;
   margin-top:18px;
   font-size:13px;
-  letter-spacing:2px;
-  color:var(--silver-soft);
+  letter-spacing:3px;
+  color:var(--silver-dim);
 }
 
 /* FULL CLICK */
 .card a{
   position:absolute;
   inset:0;
-  text-decoration:none;
   z-index:5;
 }
 
-/* ===============================
-   FLOATING SILVER PARTICLES
-================================*/
-.particle{
+/* =====================================================
+   SILENT MOTION — DEEP LAYER FLOW
+===================================================== */
+.flow{
   position:fixed;
-  width:4px;
-  height:4px;
-  background:var(--silver);
-  border-radius:50%;
-  opacity:.25;
-  animation:particleMove linear infinite;
-}
-
-@keyframes particleMove{
-  from{transform:translateY(110vh)}
-  to{transform:translateY(-10vh)}
-}
-
-/* ===============================
-   SLOW LUXURY SCAN
-================================*/
-.scan{
-  position:fixed;
-  top:-100%;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:
-    linear-gradient(
-      transparent,
-      rgba(255,255,255,.08),
-      transparent);
-  animation:scan 10s linear infinite;
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,.04), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,.03), transparent 45%);
+  animation:flow 18s ease-in-out infinite alternate;
   pointer-events:none;
 }
 
-@keyframes scan{
-  from{top:-100%}
-  to{top:100%}
+@keyframes flow{
+  from{transform:translateY(0)}
+  to{transform:translateY(-40px)}
 }
 
-/* ===============================
+/* =====================================================
    FOOTER
-================================*/
+===================================================== */
 footer{
   position:fixed;
-  bottom:22px;
+  bottom:24px;
   width:100%;
   text-align:center;
   font-size:12px;
-  letter-spacing:3px;
-  color:var(--silver-soft);
-  opacity:.7;
+  letter-spacing:4px;
+  color:var(--steel);
 }
 </style>
 </head>
 
 <body>
 
-<div class="scan"></div>
+<div class="flow"></div>
+
+<!-- CLOCK -->
+<div class="clock-vault">
+  <div class="clock-day" id="day"></div>
+  <div class="clock-date" id="date"></div>
+  <div class="clock-time" id="time"></div>
+</div>
 
 <header>
   <h1>GURU PRASAAD MURUGAN G12</h1>
-  <p>PRIVATE SILVER VAULT — MY VIRTUAL HANDBOOK</p>
+  <p>PRIVATE BLACK VAULT · MY VIRTUAL HANDBOOK</p>
 </header>
 
 <section class="grid">
 
-  <div class="card">
-    <a href="watches.html"></a>
-    <h2>WATCHES</h2>
-    <span>Chronological Horology Archive</span>
-  </div>
-
-  <div class="card">
-    <a href="perfumes.html"></a>
-    <h2>PERFUMES</h2>
-    <span>Olfactory Signature Index</span>
-  </div>
-
-  <div class="card">
-    <a href="cars.html"></a>
-    <h2>CARS</h2>
-    <span>Automotive Intelligence Vault</span>
-  </div>
-
-  <div class="card">
-    <a href="documents.html"></a>
-    <h2>DOCUMENTS</h2>
-    <span>Confidential Knowledge Ledger</span>
-  </div>
-
-  <div class="card">
-    <a href="links.html"></a>
-    <h2>LINKS</h2>
-    <span>External Strategic Nodes</span>
-  </div>
-
-  <div class="card">
-    <a href="videos.html"></a>
-    <h2>VIDEOS</h2>
-    <span>Visual Memory Repository</span>
-  </div>
+  <div class="card"><a href="watches.html"></a><h2>WATCHES</h2><span>Haute Horology Archive</span></div>
+  <div class="card"><a href="perfumes.html"></a><h2>PERFUMES</h2><span>Signature Scent Index</span></div>
+  <div class="card"><a href="cars.html"></a><h2>CARS</h2><span>Automotive Intelligence</span></div>
+  <div class="card"><a href="documents.html"></a><h2>DOCUMENTS</h2><span>Private Knowledge Vault</span></div>
+  <div class="card"><a href="links.html"></a><h2>LINKS</h2><span>Strategic External Nodes</span></div>
+  <div class="card"><a href="videos.html"></a><h2>VIDEOS</h2><span>Visual Memory Archive</span></div>
 
 </section>
 
-<footer>SYSTEM STATUS : ACTIVE · ACCESS LEVEL : PRIVATE</footer>
+<footer>SYSTEM STATUS · ACTIVE · ACCESS LEVEL · PRIVATE</footer>
 
 <script>
-/* SILVER PARTICLES */
-for(let i=0;i<40;i++){
-  const p=document.createElement("div");
-  p.className="particle";
-  p.style.left=Math.random()*100+"vw";
-  p.style.animationDuration=14+Math.random()*14+"s";
-  p.style.animationDelay=Math.random()*-30+"s";
-  document.body.appendChild(p);
+/* =====================================================
+   CHENNAI CLOCK — REAL TIME, FLIP EFFECT
+===================================================== */
+const timeEl=document.getElementById("time");
+const dayEl=document.getElementById("day");
+const dateEl=document.getElementById("date");
+
+function updateClock(){
+  const now=new Date().toLocaleString("en-US",{timeZone:"Asia/Kolkata"});
+  const d=new Date(now);
+
+  const days=["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+  dayEl.textContent=days[d.getDay()];
+
+  dateEl.textContent=d.toDateString().toUpperCase();
+
+  const h=String(d.getHours()).padStart(2,"0");
+  const m=String(d.getMinutes()).padStart(2,"0");
+
+  timeEl.innerHTML="";
+  [...h,":",...m].forEach(ch=>{
+    if(ch===":"){
+      const colon=document.createElement("span");
+      colon.textContent=":";
+      colon.style.margin="0 4px";
+      timeEl.appendChild(colon);
+    }else{
+      const dig=document.createElement("div");
+      dig.className="digit";
+      const span=document.createElement("span");
+      span.textContent=ch;
+      dig.appendChild(span);
+      timeEl.appendChild(dig);
+    }
+  });
 }
 
-/* MICRO PARALLAX */
-document.addEventListener("mousemove",e=>{
-  const x=(e.clientX/window.innerWidth-.5)*6;
-  const y=(e.clientY/window.innerHeight-.5)*6;
-  document.body.style.backgroundPosition=
-    `${50+x}% ${50+y}%`;
-});
+updateClock();
+setInterval(updateClock,1000);
 </script>
 
 </body>
 </html>
+
 
 
 
