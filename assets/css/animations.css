@@ -1,0 +1,15 @@
+.vault-card{
+  transition:
+    transform .9s cubic-bezier(.18,.85,.35,1),
+    box-shadow .9s;
+  transform-style:preserve-3d;
+}
+
+.vault-card:hover{
+  transform:
+    translateY(-22px)
+    rotateX(8deg)
+    rotateY(-6deg)
+    scale(1.05);
+  box-shadow:0 80px 200px rgba(0,0,0,1);
+}
