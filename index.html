@@ -2,342 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GURU PRASAAD MURUGAN G12 — Private Black Vault</title>
-
-<style>
-/* =====================================================
-   CORE PALETTE — TRUE BLACK & SILVER (NO GREY UI)
-===================================================== */
-:root{
-  --black:#000000;
-  --black-deep:#020202;
-  --silver:#e6e6e6;
-  --silver-dim:#b5b5b5;
-  --steel:#8f8f8f;
-}
-
-/* =====================================================
-   RESET
-===================================================== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-/* =====================================================
-   BODY — PURE BLACK, SILENT LUXURY
-===================================================== */
-body{
-  background:
-    radial-gradient(circle at top, #0a0a0a 0%, #000 55%);
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  color:var(--silver);
-  min-height:100vh;
-  overflow:hidden;
-}
-
-/* =====================================================
-   MICRO GRID (MARBLE FLOOR EFFECT)
-===================================================== */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size:120px 120px;
-  opacity:.15;
-  pointer-events:none;
-}
-
-/* =====================================================
-   CLOCK VAULT — TOP LEFT
-===================================================== */
-.clock-vault{
-  position:fixed;
-  top:28px;
-  left:28px;
-  width:230px;
-  padding:18px 20px;
-  background:linear-gradient(145deg,#050505,#000);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:18px;
-  box-shadow:
-    0 25px 60px rgba(0,0,0,.85),
-    inset 0 0 0 rgba(255,255,255,0);
-  z-index:20;
-}
-
-/* CLOCK TEXT */
-.clock-day{
-  font-weight:700;
-  letter-spacing:3px;
-  font-size:14px;
-  color:var(--silver);
-}
-
-.clock-date{
-  margin-top:6px;
-  font-size:12px;
-  letter-spacing:2px;
-  color:var(--silver-dim);
-}
-
-/* DIGITAL FLIP TIME */
-.clock-time{
-  margin-top:14px;
-  display:flex;
-  gap:4px;
-  font-size:34px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-
-.digit{
-  position:relative;
-  width:28px;
-  height:42px;
-  perspective:600px;
-}
-
-.digit span{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#000;
-  border-radius:6px;
-  box-shadow:
-    inset 0 -2px 0 rgba(255,255,255,.15);
-  transform-origin:bottom;
-  transition:transform .6s cubic-bezier(.2,.8,.2,1);
-}
-
-/* =====================================================
-   HEADER — BOLD, COMMANDING
-===================================================== */
-header{
-  text-align:center;
-  padding:90px 20px 50px;
-}
-
-header h1{
-  font-size:46px;
-  font-weight:900;
-  letter-spacing:6px;
-  color:var(--silver);
-  text-transform:uppercase;
-  text-shadow:
-    0 0 20px rgba(255,255,255,.15),
-    0 0 60px rgba(255,255,255,.08);
-}
-
-header p{
-  margin-top:16px;
-  font-size:13px;
-  letter-spacing:5px;
-  color:var(--steel);
-}
-
-/* =====================================================
-   MAIN VAULT GRID (3D DEPTH)
-===================================================== */
-.grid{
-  max-width:1500px;
-  margin:auto;
-  padding:60px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:60px;
-  perspective:2000px;
-}
-
-/* =====================================================
-   VAULT PANEL (REAL DEPTH)
-===================================================== */
-.card{
-  position:relative;
-  padding:55px 45px;
-  border-radius:26px;
-  background:
-    linear-gradient(160deg,#070707,#000);
-  border:1px solid rgba(255,255,255,.22);
-  box-shadow:
-    0 40px 120px rgba(0,0,0,.9);
-  transform-style:preserve-3d;
-  transition:
-    transform .9s cubic-bezier(.18,.85,.35,1),
-    box-shadow .9s;
-}
-
-/* METAL EDGE GLEAM */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius:26px;
-  background:
-    linear-gradient(120deg,
-      transparent,
-      rgba(255,255,255,.35),
-      transparent);
-  opacity:.18;
-  filter:blur(14px);
-}
-
-/* INNER GLASS */
-.card::after{
-  content:"";
-  position:absolute;
-  inset:14px;
-  border-radius:22px;
-  background:rgba(255,255,255,.03);
-  pointer-events:none;
-}
-
-/* HOVER — SLOW, HEAVY, EXPENSIVE */
-.card:hover{
-  transform:
-    translateY(-22px)
-    rotateX(8deg)
-    rotateY(-6deg)
-    scale(1.05);
-  box-shadow:
-    0 70px 180px rgba(0,0,0,1);
-}
-
-/* CARD TEXT */
-.card h2{
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:5px;
-  color:var(--silver);
-}
-
-.card span{
-  display:block;
-  margin-top:18px;
-  font-size:13px;
-  letter-spacing:3px;
-  color:var(--silver-dim);
-}
-
-/* FULL CLICK */
-.card a{
-  position:absolute;
-  inset:0;
-  z-index:5;
-}
-
-/* =====================================================
-   SILENT MOTION — DEEP LAYER FLOW
-===================================================== */
-.flow{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 80%, rgba(255,255,255,.04), transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(255,255,255,.03), transparent 45%);
-  animation:flow 18s ease-in-out infinite alternate;
-  pointer-events:none;
-}
-
-@keyframes flow{
-  from{transform:translateY(0)}
-  to{transform:translateY(-40px)}
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-footer{
-  position:fixed;
-  bottom:24px;
-  width:100%;
-  text-align:center;
-  font-size:12px;
-  letter-spacing:4px;
-  color:var(--steel);
-}
-</style>
+<title>GURU PRASAAD MURUGAN G12</title>
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/animations.css">
 </head>
 
 <body>
 
-<div class="flow"></div>
-
-<!-- CLOCK -->
+<!-- CLOCK VAULT -->
 <div class="clock-vault">
-  <div class="clock-day" id="day"></div>
-  <div class="clock-date" id="date"></div>
-  <div class="clock-time" id="time"></div>
+  <div class="day" id="day"></div>
+  <div class="date" id="date"></div>
+  <div class="time" id="time"></div>
 </div>
 
-<header>
+<!-- HERO -->
+<header class="hero">
   <h1>GURU PRASAAD MURUGAN G12</h1>
-  <p>PRIVATE BLACK VAULT · MY VIRTUAL HANDBOOK</p>
+  <p>PRIVATE BLACK HANDBOOK</p>
 </header>
 
-<section class="grid">
+<!-- NAV GRID -->
+<section class="vault-grid">
 
-  <div class="card"><a href="watches.html"></a><h2>WATCHES</h2><span>Haute Horology Archive</span></div>
-  <div class="card"><a href="perfumes.html"></a><h2>PERFUMES</h2><span>Signature Scent Index</span></div>
-  <div class="card"><a href="cars.html"></a><h2>CARS</h2><span>Automotive Intelligence</span></div>
-  <div class="card"><a href="documents.html"></a><h2>DOCUMENTS</h2><span>Private Knowledge Vault</span></div>
-  <div class="card"><a href="links.html"></a><h2>LINKS</h2><span>Strategic External Nodes</span></div>
-  <div class="card"><a href="videos.html"></a><h2>VIDEOS</h2><span>Visual Memory Archive</span></div>
+  <a class="vault-card" href="watches.html">
+    <h2>WATCHES</h2>
+    <span>Haute Horology Archive</span>
+  </a>
+
+  <a class="vault-card" href="perfumes.html">
+    <h2>PERFUMES</h2>
+    <span>Signature Scent Index</span>
+  </a>
+
+  <a class="vault-card" href="cars.html">
+    <h2>CARS</h2>
+    <span>Automotive Intelligence</span>
+  </a>
+
+  <a class="vault-card" href="documents.html">
+    <h2>DOCUMENTS</h2>
+    <span>Private Knowledge Vault</span>
+  </a>
+
+  <a class="vault-card" href="links.html">
+    <h2>LINKS</h2>
+    <span>Strategic External Nodes</span>
+  </a>
+
+  <a class="vault-card" href="videos.html">
+    <h2>VIDEOS</h2>
+    <span>Visual Memory Archive</span>
+  </a>
 
 </section>
 
-<footer>SYSTEM STATUS · ACTIVE · ACCESS LEVEL · PRIVATE</footer>
+<footer>SYSTEM STATUS · ACTIVE · PRIVATE</footer>
 
-<script>
-/* =====================================================
-   CHENNAI CLOCK — REAL TIME, FLIP EFFECT
-===================================================== */
-const timeEl=document.getElementById("time");
-const dayEl=document.getElementById("day");
-const dateEl=document.getElementById("date");
-
-function updateClock(){
-  const now=new Date().toLocaleString("en-US",{timeZone:"Asia/Kolkata"});
-  const d=new Date(now);
-
-  const days=["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
-  dayEl.textContent=days[d.getDay()];
-
-  dateEl.textContent=d.toDateString().toUpperCase();
-
-  const h=String(d.getHours()).padStart(2,"0");
-  const m=String(d.getMinutes()).padStart(2,"0");
-
-  timeEl.innerHTML="";
-  [...h,":",...m].forEach(ch=>{
-    if(ch===":"){
-      const colon=document.createElement("span");
-      colon.textContent=":";
-      colon.style.margin="0 4px";
-      timeEl.appendChild(colon);
-    }else{
-      const dig=document.createElement("div");
-      dig.className="digit";
-      const span=document.createElement("span");
-      span.textContent=ch;
-      dig.appendChild(span);
-      timeEl.appendChild(dig);
-    }
-  });
-}
-
-updateClock();
-setInterval(updateClock,1000);
-</script>
-
+<script src="assets/js/time-engine.js"></script>
 </body>
 </html>
+
 
 
 
